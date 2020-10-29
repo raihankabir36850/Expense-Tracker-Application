@@ -1,0 +1,95 @@
+:root{
+   --box-shadow:0px 1px 4px 1px rgba(199,199,199,1);
+   --income:#28a745;
+   --expense:#dc3545;
+}
+body{
+	font-family: 'Rubik', sans-serif;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+}
+.app h1{
+	padding-top:25px;
+	text-align:center;
+}
+h2{
+	text-transform: uppercase;
+	font-size: 1.3em;
+}
+.balance-container #balance{
+	font-size: 1.5em;
+}
+.cash-flow{
+	display:flex;
+	box-shadow: var(--box-shadow);
+	justify-content: center;
+	align-items:center;
+	padding-bottom: 20px;
+	padding-top:15px;
+	margin-top:20px;
+}
+.income-container{
+	border-right:1px solid #cccccc;
+	padding-right:20px;
+}
+.expense-container{
+	padding-left:20px;
+}
+#income,#expense{
+	font-size:1.3em;
+
+}
+#income{
+	color:var(--income);
+}
+#expense{
+	color:var(--expense);
+}
+#transaction{
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+.transaction-container li{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding:10px;
+	box-shadow:var(--box-shadow);
+	margin-bottom:10px;
+}
+.transaction-container li .income-amt{
+	display:inline-block;
+	background-color: var(--income);
+	color:white;
+	padding:5px;
+	border-radius:3px;
+	margin-right: 5px;
+	
+}
+.transaction-container li .expense-amt{
+	display:inline-block;
+	background-color: var(--expense);
+	color:white;
+	padding:5px;
+	border-radius:3px;
+	margin-right: 5px;
+}
+.transaction-container li button{
+	padding:5px 10px 4px 10px;
+}
+.form-container form{
+	display:flex;
+	flex-direction: column;
+
+}
+.form-container form input{
+	height:35px;
+}
+.form-container form label{
+	font-size: 0.9em;
+	text-transform: uppercase;
+}
+
