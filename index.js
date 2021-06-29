@@ -41,10 +41,10 @@ function addTransaction(name,amount,type){
 	if(name!=="" && amount!==""){
 		id:uniqueId()
 		var transaction={
-			id:uniqueId(),
-		name:nameInputEl.value,
-		amount:parseInt(amountInputEl.value),  
-type:type
+		     id:uniqueId(),
+		     name:nameInputEl.value,
+		     amount:parseInt(amountInputEl.value),  
+                     type
 	};
 
 state.transactions.push(transaction);
@@ -56,7 +56,6 @@ state.transactions.push(transaction);
 	nameInputEl.value=""
 	amountInputEl.value="";
 }
-
 
 
 function onAddExpenseClick(){
@@ -83,33 +82,25 @@ function updateStates(){
 	state.income= income;
 	state.expense=expense;
 	localStorage.setItem("expenseTracker",JSON.stringify(state));
-
 	render();
-
 }
 
 
-
 function render(){
-
-
 	balanceElement.innerHTML=`$${state.balance}`;
 	incomeElement.innerHTML = `$${state.income}`;
 	expenseElement.innerHTML = `$${state.expense}`;
 
-     var transaction,containerEl,amountEl,item,btnEl;
+        var transaction,containerEl,amountEl,item,btnEl;
 
-     transactionEl.innerHTML=" ";
-     for(var i=0;i<state.transactions.length;i++){
+        transactionEl.innerHTML=" ";
+        for(var i=0;i<state.transactions.length;i++){
      	transaction=document.createElement("li");
-        item=state.transactions[i]
-        transaction.append(item.name);
-        transactionEl.appendChild(transaction);
+		item=state.transactions[i]
+		transaction.append(item.name);
+		transactionEl.appendChild(transaction);
      	
-
-
      	containerEl=document.createElement("div");
-
         amountEl=document.createElement("span");
 
         if(item.type==="income"){
@@ -117,16 +108,18 @@ function render(){
         }else if(item.type==="expense"){
         	amountEl.classList.add("expense-amt");
         }
+		
         amountEl.innerHTML=`$${item.amount}`;
         containerEl.appendChild(amountEl);
 		btnEl=document.createElement("button");
 		btnEl.setAttribute("data-id", item.id);
+		
         btnEl.innerHTML="x";
+		
         btnEl.addEventListener("click",onDeleteClick);
         containerEl.appendChild(btnEl);
 
-        transaction.appendChild(containerEl);
-     	
+        transaction.appendChild(containerEl);	
      }
      
 }
@@ -134,6 +127,7 @@ function render(){
 function onDeleteClick(event){
 	var id= parseInt(event.target.getAttribute("data-id"));
 	var deleteIndex;
+	
 	for(var i=0; i<state.transactions.length;i++){
 		if(state.transactions[i].id===id){
 
@@ -142,7 +136,6 @@ function onDeleteClick(event){
 		}
 	}
 	state.transactions.splice(deleteIndex,1);
-
 	updateStates();
 
 }
